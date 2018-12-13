@@ -101,7 +101,33 @@ void DFA::create_dfa (const set<set<state_t> >& OM) {
       }
     }
   }
-  states_ = states;
+
+  //Antes de terminar, procedemos a actualizar los ID's de cada estado
+  /* Para cada estado, habra que leer todas las aristas, y sustituir el valor de las mismas por el que corresponda */
+  unsigned cont = 0;
+  for (state_t state : states) { //Leemos los estados
+    //Buscamos las aristas que apunten a este nodo
+    for (state_t st : states) {
+      state_t aux(st.id(),st.is_accept());
+      for (pair<char,unsigned> pair : st.getNext()) {
+        if (get<1>(pair) == state.id()) {
+          aux.insert_pair(get<0>(pair),cont);
+        } else {
+          aux.insert_pair(get<0>(pair),get<1>(pair));
+        }
+      }
+      states.erase(aux);
+      states.insert(aux);
+    }
+    cont++;
+  }
+  cont = 0;
+  set<state_t> new_states;
+  for(state_t state : states) {
+    state.new_id(cont++);
+    new_states.insert(state);
+  }
+  states_ = new_states;
 }
 
 void DFA::show_chain_result (void) {
@@ -167,7 +193,14 @@ void DFA::minDFA (void) {
 
     OM = new_partition(COM); //Particiona los conjuntos
   } while (!equal(COM,OM));
-  cout << "El DFA minimo tiene " << OM.size() << " estados.\n";
+  cout << "El DFA minimo tiene " << OM.size() << " estados. ";
+
+  if (OM.size() == all_states_) {
+    cout << "El DFA ya era minimo.\n";
+    return;
+  } else {
+    cout << "\n";
+  }
 
   create_dfa(OM); //Crea el autómata. Uso del overload
 }

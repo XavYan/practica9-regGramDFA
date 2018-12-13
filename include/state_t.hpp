@@ -9,6 +9,7 @@
 #pragma once
 
 #include <iostream>
+#include <cassert>
 #include <set>
 #include <utility>
 
@@ -80,6 +81,13 @@ public:
   */
 
   void insert_pair (const char symbol, const unsigned id);
+
+  /**
+  * @brief Modifica el ID actual del estado
+  * @param id ID nuevo del estado
+  */
+
+  void new_id (const unsigned& id);
 
   /**
   * @brief Imprime por pantalla el estado y sus conexiones en un formato legible

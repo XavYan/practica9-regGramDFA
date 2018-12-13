@@ -31,6 +31,10 @@ void state_t::insert_pair (const char symbol, const unsigned id) {
   next_.insert(new_pair);
 }
 
+void state_t::new_id (const unsigned& id) {
+  id_ = id;
+}
+
 ostream& state_t::dbg_write (void) const {
   cout << "\t---------- ESTADO " << id_ << " -----------\n";
   cout << "\tEs un nodo de aceptacion?: " << accept_ << "\n";
