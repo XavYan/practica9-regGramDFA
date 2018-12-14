@@ -23,9 +23,9 @@ void GR::gen_GR (const char* nombreFichero, bool& errorApertura) {
 
   //Establecemos los valores de los simbolos no terminales
   vector<char> V(dfa.size());
-  S_ = V[dfa.init()] = 'S';
+  S_ = V[dfa.init()] = 'A';
   V_.insert(S_);
-  char ascii = 65;
+  char ascii = 66;
   for (int i = 0; i < V.size(); i++) {
     if (i != dfa.init()) {
       if (ascii >= 65 && ascii <= 90) {
@@ -45,15 +45,47 @@ void GR::gen_GR (const char* nombreFichero, bool& errorApertura) {
     for (pair<char,unsigned> pair : state.getNext()) {
       aux_s += get<0>(pair);
       aux_s += V[get<1>(pair)];
-      if (++cont < state.getNext().size()) aux_s += "|";
+      if (++cont < state.getNext().size()) aux_s += " | ";
     }
-    if (state.is_accept()) aux_s += "|~";
+    if (state.is_accept()) aux_s += " | ~";
     P_.insert(aux_s);
   }
 }
 
 void GR::export_to (const char* nombreFichero, bool& errorApertura) {
+  ofstream fich;
+  fich.open(nombreFichero);
+  if (!fich.is_open()) {
+    cerr << "El fichero no se ha podido abrir con exito.\n";
+    return;
+  }
 
+  /* Guardamos la informacion */
+  //Numero total de simbolos terminales
+  fich << alphabet_.size();
+  fich << "\n";
+
+  //Todos los simbolos terminales de la gramatica
+  for (char c : alphabet_) {
+    fich << c << " ";
+  }
+  fich << "\n";
+
+  //Numero de simbolos no terminales de la gramatica
+  fich << V_.size() << "\n";
+
+  //Todos los simbolos no terminales de la gramatica
+  fich << S_ << " "; //Primero el simbolo de arranque
+  for (char c : V_) {
+    if (c == S_) continue;
+    fich << c << " ";
+  }
+  fich << "\n";
+
+  //Imprimimos las reglas de produccion
+  for (string s : P_) {
+    fich << s << "\n";
+  }
 }
 
 const set<char> GR::alphabet (void) {
