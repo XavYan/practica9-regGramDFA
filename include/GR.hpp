@@ -11,8 +11,8 @@ class GR {
 private:
   set<char> alphabet_; //Alfabeto de la gramatica
   set<char> V_; //Conjunto de simbolos no terminales
-  set<char> S_; //Axioma de la gramatica
-  set<set<string> > P_; //Conjunto de reglas (produciones) de la gramatica
+  char S_; //Axioma de la gramatica
+  set<string> P_; //Conjunto de reglas (produciones) de la gramatica
 
 public:
 
@@ -42,7 +42,7 @@ public:
  * @param errorApertura Indicamos si ha habido algun error.
  */
 
- void export (const char* nombreFichero, bool& errorApertura);
+ void export_to (const char* nombreFichero, bool& errorApertura);
 
  /**
   * @brief Devuelve el alfabeto de la gramatica
@@ -51,4 +51,6 @@ public:
 
   const set<char> alphabet (void);
 
-}
+  ostream& write (ostream& os);
+
+};

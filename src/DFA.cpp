@@ -11,6 +11,18 @@ const unsigned DFA::init (void) {
   return init_;
 }
 
+const unsigned DFA::size (void) {
+  return all_states_;
+}
+
+const bool DFA::empty (void) {
+  return (all_states_ <= 0 ? true : false);
+}
+
+set<state_t> DFA::getStates (void) {
+  return states_;
+}
+
 void DFA::create_dfa (const char* nombreFichero, bool& errorApertura) {
   states_.clear();
   ifstream fich;
@@ -47,7 +59,7 @@ void DFA::create_dfa (const char* nombreFichero, bool& errorApertura) {
     symbol_read.clear();
     for (int j = 0; j < transition; j++) {
       fich >> (char &)symbol;
-      if (alphabet.find(symbol) == alphabet.end()) alphabet.insert(symbol);
+      if (alphabet_.find(symbol) == alphabet_.end()) alphabet_.insert(symbol);
       if (symbol_read.find(symbol) != symbol_read.end()) {
         cerr << "Error. Letra repetida en la definicion de las aristas del estado " << state.id()+1 << ". DFA erroneo.\n";
         errorApertura = 1;
@@ -160,10 +172,14 @@ void DFA::show_alphabet (void) {
   cout << "Alfabeto utilizado por el automata: ";
   cout << "{";
   int cont = 0;
-  for (set<char>::iterator it = alphabet.begin(); it != alphabet.end(); it++) {
-    cout << *it << (cont++ != alphabet.size()-1 ? "," : "");
+  for (set<char>::iterator it = alphabet_.begin(); it != alphabet_.end(); it++) {
+    cout << *it << (cont++ != alphabet_.size()-1 ? "," : "");
   }
   cout << "}\n";
+}
+
+const set<char> DFA::alphabet (void) {
+  return alphabet_;
 }
 
 void DFA::minDFA (void) {
@@ -187,20 +203,8 @@ void DFA::minDFA (void) {
   do {
     COM = OM; //Antiguo conjunto
 
-    cout << "P" << cont++ << " = ";
-    write_set_of_set(COM);
-    cout << "\n";
-
     OM = new_partition(COM); //Particiona los conjuntos
   } while (!equal(COM,OM));
-  cout << "El DFA minimo tiene " << OM.size() << " estados. ";
-
-  if (OM.size() == all_states_) {
-    cout << "El DFA ya era minimo.\n";
-    return;
-  } else {
-    cout << "\n";
-  }
 
   create_dfa(OM); //Crea el autómata. Uso del overload
 }
@@ -258,7 +262,7 @@ ostream& DFA::write (ostream& os) const {
 
 void DFA::clear (void) {
   states_.clear();
-  alphabet.clear();
+  alphabet_.clear();
 }
 
 //METODOS PRIVADOS////////////////////////////////////////
@@ -280,7 +284,7 @@ set<set<state_t> > DFA::new_partition (const set<set<state_t> >& COM) {
 set<set<state_t> > DFA::descomp (const set<state_t>& G, const set<set<state_t> >& COM) {
   set<set<state_t> > T;
   T.insert(G);
-  for (char it : alphabet) { //Para cada letra del alfabeto...
+  for (char it : alphabet_) { //Para cada letra del alfabeto...
     set<set<state_t> > P;
     for (set<state_t> j : T) { //Lee todos los conjuntos de T
       set<set<state_t> > T2;

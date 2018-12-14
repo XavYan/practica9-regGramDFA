@@ -7,15 +7,15 @@ LDIR =../lib
 
 LIBS=-lm
 
-_OBJ = main.o DFA.o state_t.o
+_OBJ = main.o GR.o DFA.o state_t.o
 OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 
-all: DFA
+all: GR
 
-$(ODIR)/main.o: $(ODIR)/main.cpp $(ODIR)/DFA.cpp $(ODIR)/state_t.cpp $(IDIR)/DFA.hpp $(IDIR)/state_t.hpp
+$(ODIR)/main.o: $(ODIR)/main.cpp $(ODIR)/GR.cpp $(ODIR)/DFA.cpp $(ODIR)/state_t.cpp $(IDIR)/GR.hpp $(IDIR)/DFA.hpp $(IDIR)/state_t.hpp
 	$(CC) -c -o $@ $< $(CFLAGS)
 
-DFA: $(OBJ)
+GR: $(OBJ)
 	$(CC) -o $@ $^ $(CFLAGS) $(LIBS)
 
 .PHONY: clean

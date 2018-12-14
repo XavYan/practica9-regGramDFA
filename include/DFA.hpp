@@ -22,7 +22,7 @@ private:
   set<state_t> states_; //conjunto de estados
   int all_states_; //cantidad de estados totales
   unsigned init_; //id del estado inicial
-  set<char> alphabet; //alfabeto sobre el que el automata trabaja
+  set<char> alphabet_; //alfabeto sobre el que el automata trabaja
 public:
 
   /**
@@ -50,6 +50,27 @@ public:
   */
 
   const unsigned init (void);
+
+/**
+ * @brief Devuelve el numero de estados del automata
+ * @return Numero de estados del automata
+ */
+
+  const unsigned size (void);
+
+/**
+ * @brief Comprueba si el automata no tiene estados
+ * @return '1' si el automata no tiene estados, '0' en caso contrario
+ */
+
+ const bool empty (void);
+
+/**
+ * @brief Devuelve una copia del conjunto de estados del DFA
+ * @return Conjunto de estados del DFA
+ */
+
+ set<state_t> getStates (void);
 
   /**
   * @brief Crea el DFA
@@ -83,6 +104,13 @@ public:
   */
 
   void show_alphabet (void);
+
+/**
+ * @brief Devuelve el alfabeto que usa el automata
+ * @return Retorna el alfabeto
+ */
+
+  const set<char> alphabet (void);
 
   /**
   * @brief Minimiza el DFA.
