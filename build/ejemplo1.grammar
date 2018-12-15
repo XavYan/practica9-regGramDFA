@@ -1,9 +1,0 @@
-2
-a b 
-5
-A B C D E 
-A -> aB | bD
-B -> aE | bC
-C -> aA | bC | ~
-D -> aC | bE
-E -> aC | bA
