@@ -1,0 +1,125 @@
+\hypertarget{class_g_r}{}\section{GR Class Reference}
+\label{class_g_r}\index{GR@{GR}}
+
+
+{\ttfamily \#include $<$G\+R.\+hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_g_r_a44cfd47b23f3a406312fc79165459e9d}{GR} (void)
+\begin{DoxyCompactList}\small\item\em Constructor de la gramatica regular. \end{DoxyCompactList}\item 
+\hyperlink{class_g_r_a60a1df45425dce1a14e0ad5b8677b8fa}{$\sim$\+GR} (void)
+\begin{DoxyCompactList}\small\item\em Destructor de la gramatica regular. \end{DoxyCompactList}\item 
+void \hyperlink{class_g_r_aa621faa9150e57848b3b2b11a52c4fa5}{gen\+\_\+\+GR} (const char $\ast$nombre\+Fichero, bool \&error\+Apertura)
+\begin{DoxyCompactList}\small\item\em Genera una gramatica regular a partir de un fichero .dfa, que describe un \hyperlink{class_d_f_a}{D\+FA}. \end{DoxyCompactList}\item 
+void \hyperlink{class_g_r_a5c4dca6e2174446585a234b4e8792743}{export\+\_\+to} (const char $\ast$nombre\+Fichero, bool \&error\+Apertura)
+\begin{DoxyCompactList}\small\item\em Exporta a un fichero con extension \textquotesingle{}.grammar\textquotesingle{} la gramatica regular definida por la clase. \end{DoxyCompactList}\item 
+const set$<$ char $>$ \hyperlink{class_g_r_a316145725ac4ad4acbf7fe9a3f4740bb}{alphabet} (void)
+\begin{DoxyCompactList}\small\item\em Devuelve el alfabeto de la gramatica. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 10 of file G\+R.\+hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_g_r_a44cfd47b23f3a406312fc79165459e9d}\label{class_g_r_a44cfd47b23f3a406312fc79165459e9d}} 
+\index{GR@{GR}!GR@{GR}}
+\index{GR@{GR}!GR@{GR}}
+\subsubsection{\texorpdfstring{G\+R()}{GR()}}
+{\footnotesize\ttfamily G\+R\+::\+GR (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Constructor de la gramatica regular. 
+
+
+
+Definition at line 4 of file G\+R.\+cpp.
+
+\mbox{\Hypertarget{class_g_r_a60a1df45425dce1a14e0ad5b8677b8fa}\label{class_g_r_a60a1df45425dce1a14e0ad5b8677b8fa}} 
+\index{GR@{GR}!````~GR@{$\sim$\+GR}}
+\index{````~GR@{$\sim$\+GR}!GR@{GR}}
+\subsubsection{\texorpdfstring{$\sim$\+G\+R()}{~GR()}}
+{\footnotesize\ttfamily G\+R\+::$\sim$\+GR (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Destructor de la gramatica regular. 
+
+
+
+Definition at line 5 of file G\+R.\+cpp.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_g_r_a316145725ac4ad4acbf7fe9a3f4740bb}\label{class_g_r_a316145725ac4ad4acbf7fe9a3f4740bb}} 
+\index{GR@{GR}!alphabet@{alphabet}}
+\index{alphabet@{alphabet}!GR@{GR}}
+\subsubsection{\texorpdfstring{alphabet()}{alphabet()}}
+{\footnotesize\ttfamily const set$<$ char $>$ G\+R\+::alphabet (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Devuelve el alfabeto de la gramatica. 
+
+\begin{DoxyReturn}{Returns}
+Alfabeto de la gramatica 
+\end{DoxyReturn}
+
+
+Definition at line 91 of file G\+R.\+cpp.
+
+\mbox{\Hypertarget{class_g_r_a5c4dca6e2174446585a234b4e8792743}\label{class_g_r_a5c4dca6e2174446585a234b4e8792743}} 
+\index{GR@{GR}!export\+\_\+to@{export\+\_\+to}}
+\index{export\+\_\+to@{export\+\_\+to}!GR@{GR}}
+\subsubsection{\texorpdfstring{export\+\_\+to()}{export\_to()}}
+{\footnotesize\ttfamily void G\+R\+::export\+\_\+to (\begin{DoxyParamCaption}\item[{const char $\ast$}]{nombre\+Fichero,  }\item[{bool \&}]{error\+Apertura }\end{DoxyParamCaption})}
+
+
+
+Exporta a un fichero con extension \textquotesingle{}.grammar\textquotesingle{} la gramatica regular definida por la clase. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nombre\+Fichero} & Fichero con extension \textquotesingle{}.grammar\textquotesingle{} donde guardar la informacion. \\
+\hline
+{\em error\+Apertura} & Indicamos si ha habido algun error. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 55 of file G\+R.\+cpp.
+
+\mbox{\Hypertarget{class_g_r_aa621faa9150e57848b3b2b11a52c4fa5}\label{class_g_r_aa621faa9150e57848b3b2b11a52c4fa5}} 
+\index{GR@{GR}!gen\+\_\+\+GR@{gen\+\_\+\+GR}}
+\index{gen\+\_\+\+GR@{gen\+\_\+\+GR}!GR@{GR}}
+\subsubsection{\texorpdfstring{gen\+\_\+\+G\+R()}{gen\_GR()}}
+{\footnotesize\ttfamily void G\+R\+::gen\+\_\+\+GR (\begin{DoxyParamCaption}\item[{const char $\ast$}]{nombre\+Fichero,  }\item[{bool \&}]{error\+Apertura }\end{DoxyParamCaption})}
+
+
+
+Genera una gramatica regular a partir de un fichero .dfa, que describe un \hyperlink{class_d_f_a}{D\+FA}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nombre\+Fichero} & Fichero con extension .dfa a partir del cual generaremos la gramatica regular. \\
+\hline
+{\em error\+Apertura} & Variable booleana el cual se usa para indicar si ha habido error \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 11 of file G\+R.\+cpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\hyperlink{_g_r_8hpp}{G\+R.\+hpp}\item 
+src/\hyperlink{_g_r_8cpp}{G\+R.\+cpp}\end{DoxyCompactItemize}

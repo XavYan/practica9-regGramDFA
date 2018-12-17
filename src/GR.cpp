@@ -91,29 +91,3 @@ void GR::export_to (const char* nombreFichero, bool& errorApertura) {
 const set<char> GR::alphabet (void) {
   return alphabet_;
 }
-
-ostream& GR::write (ostream& os) {
-  //Imprimimos el alfabeto
-  os << "{";
-  unsigned cont = 0;
-  for (char c : alphabet_) {
-    os << c << (++cont < alphabet_.size() ? "," : "");
-  }
-  os << "}\n";
-
-  //Imprimimos axioma de la gramatica
-  os << S_ << "\n";
-
-  //Imprimimos los simbolos no terminales
-  for (char c : V_) {
-    os << c << " ";
-  }
-  os << "\n";
-
-
-  //Imprimimos los prototipos
-  for (string s : P_) {
-    os << s << "\n";
-  }
-  return os;
-}

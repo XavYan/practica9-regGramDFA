@@ -51,6 +51,4 @@ public:
 
   const set<char> alphabet (void);
 
-  ostream& write (ostream& os);
-
 };
